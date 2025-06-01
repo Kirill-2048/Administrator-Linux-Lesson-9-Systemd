@@ -81,6 +81,7 @@ root@ubuntu:~# grep -R "I found word" /var/log/syslog
 Вывод:
 
 /var/log/syslog:2025-06-01T09:03:25.804639+00:00 ubuntu root: 2025-06-01 09:03:25: I found word, Master!
+
 /var/log/syslog:2025-06-01T09:06:08.172767+00:00 ubuntu root: 2025-06-01 09:06:08: I found word, Master!
 
 Сообщение получено.
