@@ -35,7 +35,7 @@ WORD=$1
 
 LOG=$2
 
-DATE=`date`
+DATE=$(date +"%Y-%m-%d %H:%M:%S")
 
 if grep $WORD $LOG &> /dev/null
 then
