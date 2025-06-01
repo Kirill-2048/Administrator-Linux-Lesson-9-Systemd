@@ -51,8 +51,7 @@ root@ubuntu:/# systemctl status spawn-fcgi
   spawn-fcgi.service - Spawn-fcgi startup service by Otus
   
      Loaded: loaded (/etc/systemd/system/spawn-fcgi.service; disabled; preset: enabled)
-     
-     Active: active (running) since Sun 2025-06-01 15:37:32 UTC; 1min 0s ago
+          Active: active (running) since Sun 2025-06-01 15:37:32 UTC; 1min 0s ago
      
    Main PID: 16940 (php-cgi)
       Tasks: 33 (limit: 4599)
