@@ -73,7 +73,9 @@ WantedBy=multi-user.target
 6.	Проверка результата
 
 root@ubuntu:~# systemctl start watchlog.service
+
 root@ubuntu:~# systemctl start watchlog.timer
+
 root@ubuntu:~# grep -R "I found word" /var/log/syslog
 
 Вывод:
