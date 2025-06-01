@@ -4,22 +4,31 @@
 1.	Cоздание файла с конфигурацией для сервиса в директории /etc/default
 
 root@ubuntu:~# cat > /etc/default/watchlog
+
 #Configuration file for my watchlog service
+
 #File and word in that file that we will be monit
+
 WORD="ALERT"
+
 LOG=/var/log/watchlog.log
 
 2.	Создание файла /var/log/watchlog.log
 
 root@ubuntu:~# cat > /var/log/watchlog.log
+
 #File /var/log/watchlog.log
+
 #This file contains key word
+
 #Key word is ALERT
 
 3.	Создание скрипта
 
 root@ubuntu:~# touch /opt/watchlog.sh
+
 root@ubuntu:~# nano /opt/watchlog.sh
+
 #!/bin/bash
 
 WORD=$1
@@ -38,6 +47,7 @@ root@ubuntu:~# chmod +x /opt/watchlog.sh
 4.	Создание юнита для сервиса
 
 root@ubuntu:~# cat > /etc/systemd/system/watchlog.service
+
 [Unit]
 Description=My watchlog service
 [Service]
@@ -48,6 +58,7 @@ ExecStart=/opt/watchlog.sh $WORD $LOG
 5.	Создание юнита для таймера
 
 root@ubuntu:~# cat > /etc/systemd/system/watchlog.timer
+
 [Unit]
 Description=Run watchlog script every 30 second
 [Timer]
