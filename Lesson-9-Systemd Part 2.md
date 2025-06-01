@@ -31,9 +31,13 @@ After=network.target
 [Service]
 
 Type=simple
+
 PIDFile=/var/run/spawn-fcgi.pid
+
 EnvironmentFile=/etc/spawn-fcgi/fcgi.conf
+
 ExecStart=/usr/bin/spawn-fcgi -n $OPTIONS
+
 KillMode=process
 
 [Install]
