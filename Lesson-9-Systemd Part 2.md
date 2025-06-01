@@ -9,20 +9,27 @@ root@ubuntu:~# apt install spawn-fcgi php php-cgi php-cli apache2 libapache2-mod
 2.	Создаем файл с настройками для будущего сервиса /etc/spawn-fcgi/fcgi.conf.
 
 root@ubuntu:/etc# touch /etc/spawn-fcgi/fcgi.conf
+
 root@ubuntu:/etc# nano /etc/spawn-fcgi/fcgi.conf
+
 SOCKET=/var/run/php-fcgi.sock
+
 OPTIONS="-u www-data -g www-data -s $SOCKET -S -M 0600 -C 32 -F 1 -- /usr/bin/php-cgi"
 
 3.	Создаем юнит-файл.
 
 root@ubuntu:/# touch /etc/systemd/system/spawn-fcgi.service
+
 root@ubuntu:/# nano /etc/systemd/system/spawn-fcgi.service
 
 [Unit]
+
 Description=Spawn-fcgi startup service by Otus
+
 After=network.target
 
 [Service]
+
 Type=simple
 PIDFile=/var/run/spawn-fcgi.pid
 EnvironmentFile=/etc/spawn-fcgi/fcgi.conf
@@ -30,11 +37,13 @@ ExecStart=/usr/bin/spawn-fcgi -n $OPTIONS
 KillMode=process
 
 [Install]
+
 WantedBy=multi-user.target
 
 4.	Проверка работоспособности.
 
 root@ubuntu:/# systemctl start spawn-fcgi
+
 root@ubuntu:/# systemctl status spawn-fcgi
 
 Вывод:
