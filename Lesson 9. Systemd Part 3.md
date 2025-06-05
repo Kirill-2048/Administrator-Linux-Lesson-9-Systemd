@@ -2,6 +2,7 @@
 ## Запуск нескольких инстансов nginx с разными конфигурационными файлами одновременно.
 
 1.	Создание нового Unit для работы с шаблонами (/etc/systemd/system/nginx@.service).
+   
 
 root@ubuntu:~# touch /etc/systemd/system/nginx@.service
 
@@ -77,6 +78,7 @@ http {
  
 #include /etc/nginx/sites-enabled/*;
 
+
 3.	Проверка синтаксиса.
 
 nginx: the configuration file /etc/nginx/nginx-second.conf syntax is ok
@@ -88,6 +90,7 @@ root@ubuntu:/# nginx -t -c /etc/nginx/nginx-first.conf
 nginx: the configuration file /etc/nginx/nginx-first.conf syntax is ok
 
 nginx: configuration file /etc/nginx/nginx-first.conf test is successful
+
 
 4.	Проверка работоспособности.
 
@@ -118,6 +121,7 @@ root@ubuntu:/# systemctl status nginx@second
        ….
 
 июн 05 13:32:10 ubuntu systemd[1]: Started nginx@second.service - A high performance web server and a reverse proxy server.
+
 
 5.	Проверка портов.
 
