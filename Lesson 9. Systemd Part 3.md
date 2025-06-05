@@ -50,10 +50,14 @@ root@ubuntu:~# nano /etc/nginx/nginx-first.conf
 pid /run/nginx-first.pid;
 
 http {
+
 …
 	server {
+ 
 		listen 9001;
+  
 	}
+ 
 #include /etc/nginx/sites-enabled/*;
 
 root@ubuntu:~# nano /etc/nginx/nginx-second.conf
@@ -61,10 +65,15 @@ root@ubuntu:~# nano /etc/nginx/nginx-second.conf
 pid /run/nginx-second.pid;
 
 http {
+
 …
+
 	server {
+ 
 		listen 9002;
+  
 	}
+ 
 #include /etc/nginx/sites-enabled/*;
 
 3.	Проверка синтаксиса.
