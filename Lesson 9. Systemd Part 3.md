@@ -4,13 +4,17 @@
 1.	Создание нового Unit для работы с шаблонами (/etc/systemd/system/nginx@.service).
 
 root@ubuntu:~# touch /etc/systemd/system/nginx@.service
+
 root@ubuntu:~# nano /etc/systemd/system/nginx@.service
+
 [Unit]
+
 Description=A high performance web server and a reverse proxy server
 Documentation=man:nginx(8)
 After=network.target nss-lookup.target
 
 [Service]
+
 Type=forking
 PIDFile=/run/nginx-%I.pid
 ExecStartPre=/usr/sbin/nginx -t -c /etc/nginx/nginx-%I.conf -q -g 'daemon on; master_process on;'
@@ -21,6 +25,7 @@ TimeoutStopSec=5
 KillMode=mixed
 
 [Install]
+
 WantedBy=multi-user.target
 
 
@@ -28,6 +33,7 @@ WantedBy=multi-user.target
 
 
 root@ubuntu:~# cp /etc/nginx/nginx.conf /etc/nginx/nginx-first.conf
+
 root@ubuntu:~# cp /etc/nginx/nginx.conf /etc/nginx/nginx-second.conf
 
 root@ubuntu:~# nano /etc/nginx/nginx-first.conf
@@ -55,9 +61,13 @@ http {
 3.	Проверка синтаксиса.
 
 nginx: the configuration file /etc/nginx/nginx-second.conf syntax is ok
+
 nginx: configuration file /etc/nginx/nginx-second.conf test is successful
+
 root@ubuntu:/# nginx -t -c /etc/nginx/nginx-first.conf
+
 nginx: the configuration file /etc/nginx/nginx-first.conf syntax is ok
+
 nginx: configuration file /etc/nginx/nginx-first.conf test is successful
 
 4.	Проверка работоспособности.
