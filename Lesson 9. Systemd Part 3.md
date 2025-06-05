@@ -7,35 +7,35 @@ root@ubuntu:~# touch /etc/systemd/system/nginx@.service
 
 root@ubuntu:~# nano /etc/systemd/system/nginx@.service
 
-[Unit]
+	[Unit]
 
-Description=A high performance web server and a reverse proxy server
+	Description=A high performance web server and a reverse proxy server
 
-Documentation=man:nginx(8)
+	Documentation=man:nginx(8)
 
-After=network.target nss-lookup.target
+	After=network.target nss-lookup.target
 
-[Service]
+	[Service]
 
-Type=forking
+	Type=forking
 
-PIDFile=/run/nginx-%I.pid
+	PIDFile=/run/nginx-%I.pid
 
-ExecStartPre=/usr/sbin/nginx -t -c /etc/nginx/nginx-%I.conf -q -g 'daemon on; master_process on;'
+	ExecStartPre=/usr/sbin/nginx -t -c /etc/nginx/nginx-%I.conf -q -g 'daemon on; master_process on;'
 
-ExecStart=/usr/sbin/nginx -c /etc/nginx/nginx-%I.conf -g 'daemon on; master_process on;'
+	ExecStart=/usr/sbin/nginx -c /etc/nginx/nginx-%I.conf -g 'daemon on; master_process on;'
 
-ExecReload=/usr/sbin/nginx -c /etc/nginx/nginx-%I.conf -g 'daemon on; master_process on;' -s reload
+	ExecReload=/usr/sbin/nginx -c /etc/nginx/nginx-%I.conf -g 'daemon on; master_process on;' -s reload
 
-ExecStop=-/sbin/start-stop-daemon --quiet --stop --retry QUIT/5 --pidfile /run/nginx-%I.pid
+	ExecStop=-/sbin/start-stop-daemon --quiet --stop --retry QUIT/5 --pidfile /run/nginx-%I.pid
 
-TimeoutStopSec=5
+	TimeoutStopSec=5
 
-KillMode=mixed
+	KillMode=mixed
 
-[Install]
+	[Install]
 
-WantedBy=multi-user.target
+	WantedBy=multi-user.target
 
 
 2.	Создание файлов конфигурации /etc/nginx/nginx-first.conf, /etc/nginx/nginx-second.conf.
