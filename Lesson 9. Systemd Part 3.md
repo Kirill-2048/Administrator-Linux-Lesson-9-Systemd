@@ -52,6 +52,7 @@ pid /run/nginx-first.pid;
 http {
 
 …
+
 	server {
  
 		listen 9001;
